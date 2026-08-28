@@ -19,17 +19,28 @@ export type CategoryId =
   | "symbols"
   | "chaos";
 
-export const CATEGORIES: { id: CategoryId; char: string; label: string; tint: string }[] = [
-  { id: "feelings", char: "😀", label: "Smileys", tint: "var(--sun)" },
-  { id: "love", char: "❤️", label: "Love", tint: "var(--blush)" },
-  { id: "animals", char: "🐶", label: "Animals", tint: "var(--grass)" },
-  { id: "food", char: "🍕", label: "Food", tint: "var(--tangerine)" },
-  { id: "travel", char: "🚀", label: "Travel", tint: "var(--sky)" },
-  { id: "activities", char: "⚽", label: "Activities", tint: "var(--grass)" },
-  { id: "objects", char: "💡", label: "Objects", tint: "var(--sun)" },
-  { id: "symbols", char: "✨", label: "Symbols", tint: "var(--violet)" },
-  { id: "chaos", char: "💀", label: "Chaos", tint: "var(--violet)" },
+export const CATEGORIES: {
+  id: CategoryId;
+  char: string;
+  label: string;
+  kicker: string;
+  title: string;
+  count: number;
+  tint: string;
+}[] = [
+  { id: "feelings", char: "🥰", label: "Smileys", kicker: "Smileys & People", title: "People\n& Emotions", count: 712, tint: "var(--sun)" },
+  { id: "love", char: "🫶", label: "Love", kicker: "Hearts & Love", title: "Love\n& Hearts", count: 164, tint: "var(--blush)" },
+  { id: "animals", char: "🌱", label: "Animals", kicker: "Animals & Nature", title: "Nature\n& Animals", count: 237, tint: "var(--paper)" },
+  { id: "food", char: "🍕", label: "Food", kicker: "Food & Drink", title: "Food\n& Drink", count: 128, tint: "var(--tangerine)" },
+  { id: "travel", char: "✈️", label: "Travel", kicker: "Travel & Places", title: "Travel\n& Places", count: 192, tint: "var(--sky)" },
+  { id: "activities", char: "🏃", label: "Activities", kicker: "Activities", title: "Action\n& Sport", count: 98, tint: "var(--violet)" },
+  { id: "objects", char: "📷", label: "Objects", kicker: "Objects", title: "Objects\n& Things", count: 406, tint: "var(--cream)" },
+  { id: "symbols", char: "☮️", label: "Symbols", kicker: "Symbols", title: "Symbols\n& Signs", count: 384, tint: "var(--ink)" },
+  { id: "chaos", char: "🏁", label: "Chaos", kicker: "Wildcards", title: "Chaos\n& Cursed", count: 240, tint: "var(--grass)" },
 ];
+
+export const ARCHIVE_COUNT = 1791;
+
 
 function cp(char: string) {
   const c = [...char].map((s) => "U+" + s.codePointAt(0)!.toString(16).toUpperCase());

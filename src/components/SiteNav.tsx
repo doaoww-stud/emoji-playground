@@ -2,9 +2,9 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { EMOJIS } from "@/lib/emoji-data";
 
 const LINKS = [
-  { to: "/", label: "HOME" },
-  { to: "/explore", label: "EXPLORE" },
-  { to: "/favorites", label: "FAVORITES" },
+  { to: "/", label: "Home" },
+  { to: "/explore", label: "Catalogue" },
+  { to: "/favorites", label: "Saved" },
 ];
 
 export function SiteNav() {
@@ -16,35 +16,44 @@ export function SiteNav() {
   };
 
   return (
-    <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-5">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-2xl hairline bg-paper/90 px-3 py-2 backdrop-blur-sm sm:px-5">
-        <Link to="/" className="font-display text-lg font-extrabold tracking-tight sm:text-xl">
-          <span className="mr-1 inline-block anim-twinkle">✦</span>EMOJI HUB
-        </Link>
+    <header className="sticky top-0 z-40 rule-b bg-background/92 backdrop-blur-[2px]">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-8">
+        <div className="flex min-w-0 items-center gap-3">
+          <Link to="/" className="font-display text-lg leading-none font-extrabold tracking-[-0.03em] whitespace-nowrap uppercase sm:text-xl">
+            Emoji Hub
+          </Link>
+          <span className="anim-twinkle text-sun">✦</span>
+          <span className="hidden min-w-0 border-l border-ink/20 pl-3 label-mono leading-[1.3] md:block">
+            Internet archive
+            <br />
+            of emotions
+          </span>
+        </div>
 
-        <div className="flex items-center gap-1 sm:gap-2">
+        <nav className="flex items-center gap-1 sm:gap-2">
           {LINKS.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               activeOptions={{ exact: l.to === "/" }}
-              className="rounded-full px-2.5 py-1.5 font-mono text-[0.62rem] tracking-[0.16em] transition-colors hover:bg-sun/60 sm:px-3 sm:text-[0.7rem] [&.active]:bg-ink [&.active]:text-paper"
+              className="px-2 py-1.5 font-mono text-[0.66rem] tracking-[0.14em] uppercase transition-colors hover:text-ink [&.active]:underline [&.active]:decoration-sun [&.active]:decoration-[3px] [&.active]:underline-offset-[6px]"
             >
               {l.label}
             </Link>
           ))}
           <button
             onClick={random}
-            className="ml-1 rounded-full hairline bg-sun px-3 py-1.5 font-mono text-[0.62rem] tracking-[0.16em] transition-transform hover:-rotate-3 hover:scale-105 sm:text-[0.7rem]"
+            className="ml-1 flex items-center gap-1.5 border border-ink bg-sun px-3 py-1.5 font-mono text-[0.66rem] tracking-[0.14em] uppercase transition-transform hover:-translate-y-0.5"
           >
-            🎲 <span className="hidden sm:inline">RANDOM</span>
+            <span>⤨</span>
+            <span className="hidden sm:inline">Random</span>
           </button>
           <span className="ml-2 hidden items-center gap-1.5 label-mono lg:flex">
-            <span className="size-2 rounded-full bg-grass anim-twinkle" />
-            ONLINE
+            <span className="size-1.5 rounded-full bg-ink anim-twinkle" />
+            Online
           </span>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 }
